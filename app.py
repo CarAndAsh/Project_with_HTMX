@@ -1,9 +1,18 @@
 from flask import Flask
-app = Flask(__name__)
 
-@app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
+from rest.index import index_app
+
+
+def create_app():
+    app = Flask(__name__)
+    app.register_blueprint(index_app)
+    return app
+
+
+def main():
+    app = create_app()
+    app.run(debug=True)
+
 
 if __name__ == '__main__':
-    app.run()
+    main()
