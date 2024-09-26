@@ -6,3 +6,10 @@ URLs:
 
 Этап 2:
 - Установка HTMX
+
+Этап 3:
+- Ping и hover примеры
+- HTMX:
+  - 'hx-trigger="mouseenter"'
+  - 'hx-swap="outerHTML"'
+  - 'hx-trigger="click[ctrlKey]"'

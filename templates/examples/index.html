@@ -7,14 +7,7 @@
     <h1>Examples:</h1>
     <ul>
         <li><a href="{{ url_for('examples_app.ping') }}">Example Ping</a></li>
-        <li>Example 2</li>
+        <li><a href="{{ url_for('examples_app.hover') }}">Example Hover</a></li>
     </ul>
-    <hr>
-    <div>
-        <ul>
-            <li>
-                <a href="{{ url_for('index_app.index') }}">Back to main</a>
-            </li>
-        </ul>
-    </div>
+    {% include 'examples/components/footer.html' %}
 {% endblock %}
