@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Clicker
+{% endblock %}
+{% block body %}
+    <h1>Clicker</h1>
+    <form method="post">
+        <div>Clicked times: {{ count }}</div>
+        <div>
+            <button>Click!</button>
+        </div>
+    </form>
+    {% include 'components/footer-to-index.html' %}
+{% endblock %}

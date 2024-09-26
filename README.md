@@ -13,3 +13,5 @@ URLs:
   - 'hx-trigger="mouseenter"'
   - 'hx-swap="outerHTML"'
   - 'hx-trigger="click[ctrlKey]"'
+
+Этап 4:
