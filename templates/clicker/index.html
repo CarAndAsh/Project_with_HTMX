@@ -4,14 +4,6 @@
     Clicker
 {% endblock %}
 {% block body %}
-    <h1>Clicker</h1>
-    <div id="clicked-times">
-        {% include 'clicker/components/click-count.html' %}
-    </div>
-    <button
-            hx-post="{{ url_for('clicker_app.do-click') }}"
-            hx-target="#clicked-times">
-        Click!
-    </button>
+    {% include 'clicker/components/clicker-body.html' %}
     {% include 'components/footer-to-index.html' %}
 {% endblock %}
