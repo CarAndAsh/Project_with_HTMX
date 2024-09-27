@@ -15,3 +15,5 @@ URLs:
   - 'hx-trigger="click[ctrlKey]"'
 
 Этап 4:
+- Clicker via HTMX
+
