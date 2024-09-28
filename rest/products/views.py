@@ -16,4 +16,4 @@ def create_product():
     product_name = request.form.get('product-name', '').strip()
     product_price = request.form.get('product-price', '1').strip()
     product = products_storage.add(product_name, int(product_price))
-    return render_template('products/components/item.html', product=product)
+    return render_template('products/components/item-oob.html', product=product)

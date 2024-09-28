@@ -29,3 +29,4 @@ URLs:
     - 'hx-swap="outerHTML"'
     - 'hx-on::after-request="if (event.detail.successful) this.reset()"'
 - Добавление товаров в список через 'hx-swap="beforeend"'
+- Обработка out of band элементов с 'hx-swap="none"'
