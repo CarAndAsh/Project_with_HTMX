@@ -28,3 +28,4 @@ URLs:
     - 'hx-target="#products-list"'
     - 'hx-swap="outerHTML"'
     - 'hx-on::after-request="if (event.detail.successful) this.reset()"'
+- Добавление товаров в список через 'hx-swap="beforeend"'
