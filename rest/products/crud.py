@@ -27,8 +27,8 @@ class ProductStorage:
         return list(self.products.values())
 
 
-product_storage = ProductStorage()
+products_storage = ProductStorage()
 
 prod_list = [('Laptop', 1290), ('Desktop', 1990), ('Smartphone', 1090)]
 for name, price in prod_list:
-    product_storage.add(name, price)
+    products_storage.add(name, price)

@@ -1,11 +1,21 @@
-from flask import Blueprint, render_template, request
+from flask import (Blueprint, render_template, request, redirect, url_for)
 
-from .crud import product_storage
+from .crud import products_storage
 
 products_app = Blueprint('products_app', __name__)
 
 
 @products_app.get('/', endpoint='list')
 def get_products_list():
-    products = product_storage.get_list()
+    products = products_storage.get_list()
     return render_template('products/list.html', products=products)
+
+
+@products_app.post('/', endpoint='create')
+def create_product():
+    product_name = request.form.get('product-name', '').strip()
+    product_price = request.form.get('product-price', '1').strip()
+    product = products_storage.add(product_name, int(product_price))
+    # products = products_storage.get_list()
+    # return render_template('products/list.html', products=products)
+    return redirect(url_for('products_app.list'))
