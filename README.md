@@ -22,4 +22,9 @@ URLs:
 
 Этап 6:
 - Список товаров:
-  - создание через форму
+  - создание через стандартную HTML форму
+  - создание через форму с использованием HTMX:
+    - 'hx-post="{{ url_for('products_app.create') }}"'
+    - 'hx-target="#products-list"'
+    - 'hx-swap="outerHTML"'
+    - 'hx-on::after-request="if (event.detail.successful) this.reset()"'
