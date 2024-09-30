@@ -1,1 +1,12 @@
-<li>{{ product.name }} ${{ product.price }}</li>
+<li>
+    {{ product.name }} ${{ product.price }}
+    <button style="cursor: pointer"><img
+            src="{{ url_for('static', filename='img/trash-can-10417.svg') }}"
+            alt="X"
+            width="14 px"
+            height="14 px"
+            hx-swap="outerHTML"
+            hx-target="closest li"
+            hx-headers='{"X-CSRFToken":"{{ csrf_token() }}"}'
+            hx-delete="{{ url_for('products_app.delete', product_id=product.id) }}"></button>
+</li>

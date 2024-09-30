@@ -25,4 +25,11 @@ def create_product():
                             status=HTTPStatus.UNPROCESSABLE_ENTITY, )
         raise HTTPException(response=response)
     product = products_storage.add(form.name.data, form.price.data)
-    return render_template('products/components/form-and-item-oob.html', form=ProductForm(formdata=None), product=product)
+    return render_template('products/components/form-and-item-oob.html', form=ProductForm(formdata=None),
+                           product=product)
+
+
+@products_app.delete('/<int:product_id>/', endpoint='delete')
+def delete_product(product_id: int):
+    products_storage.delete(product_id)
+    return Response(status=HTTPStatus.NO_CONTENT)
