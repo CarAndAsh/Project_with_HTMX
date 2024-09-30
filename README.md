@@ -41,4 +41,7 @@ URLs:
 - пример с @csrf_exempt
 
 Этап 9:
-- удаление товара и выбор по ближайшему 'hx-target="closest li"'
+- удаление товара 
+- выбор цели:
+  - по ближайшему тегу 'hx-target="closest li"'
+  - по ближайшему классу 'hx-target="closest .product_item"'
