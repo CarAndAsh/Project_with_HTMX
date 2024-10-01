@@ -1,4 +1,5 @@
 from http import HTTPStatus
+from time import sleep
 
 from flask import (Blueprint, render_template, request, Response)
 from werkzeug.exceptions import HTTPException
@@ -31,5 +32,6 @@ def create_product():
 
 @products_app.delete('/<int:product_id>/', endpoint='delete')
 def delete_product(product_id: int):
+    sleep(2)  # only for wotchin how animation works
     products_storage.delete(product_id)
     return Response(status=HTTPStatus.NO_CONTENT)
