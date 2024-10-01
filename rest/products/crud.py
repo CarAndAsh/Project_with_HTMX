@@ -33,8 +33,11 @@ class ProductStorage:
     def get_list(self) -> list[Product]:
         return list(self.products.values())
 
-    def name_exist(self, product_name: str) -> bool:
-        return product_name in self.names
+    def get_by_id(self, product_id: int) -> Product | None:
+        return self.products.get(product_id)
+
+        def name_exist(self, product_name: str) -> bool:
+            return product_name in self.names
 
 
 products_storage = ProductStorage()
