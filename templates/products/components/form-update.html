@@ -1,9 +1,9 @@
 {% from 'macros/error-list.html' import errors_list %}
 
-<form id="create-product"
-      hx-post="{{ url_for('products_app.create') }}"
+<form id="update-product"
+      hx-put="{{ url_for('products_app.update', product_id=product.id) }}"
       hx-swap="outerHTML">
     {% include 'products/components/form-body.html' %}
-    {{ form.add }}
+    {{ form.update }}
 
 </form>

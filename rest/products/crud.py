@@ -22,9 +22,18 @@ class ProductStorage:
     def names(self) -> set[str]:
         return {product.name for product in self.products.values()}
 
+    def name_exist(self, product_name: str) -> bool:
+        return product_name in self.names
+
     def add(self, product_name: str, product_price: int) -> Product:
         product = Product(self.next_id, name=product_name, price=product_price)
         self.products[product.id] = product
+        return product
+
+    def update(self, product_id: int, product_name: str, product_price: int) -> Product:
+        product = self.products[product_id]
+        product.name = product_name
+        product.price = product_price
         return product
 
     def delete(self, product_id) -> None:
@@ -35,9 +44,6 @@ class ProductStorage:
 
     def get_by_id(self, product_id: int) -> Product | None:
         return self.products.get(product_id)
-
-        def name_exist(self, product_name: str) -> bool:
-            return product_name in self.names
 
 
 products_storage = ProductStorage()
