@@ -10,12 +10,31 @@ from .forms import ProductForm
 
 products_app = Blueprint('products_app', __name__)
 
+PAGE_DEFAULT = 1
+PER_PAGE_DEFAULT = 10
+
 
 @products_app.get('/', endpoint='list')
 def get_products_list():
     form = ProductForm()
-    products = products_storage.get_list()
-    return render_template('products/list.html', products=products, form=form)
+    all_products = products_storage.get_list()
+    page = request.args.get('page', PAGE_DEFAULT, type=int)
+    per_page = request.args.get('per_page', PER_PAGE_DEFAULT, type=int)
+    print(page)
+    to_idx = page * per_page
+    from_idx = to_idx - per_page
+    products = all_products[from_idx:to_idx]
+    next_page = to_idx < len(all_products) and page + 1
+
+    template_name = 'products/list.html'
+    if request.args.get('only_items'):
+        template_name = 'products/components/only-items-reveal.html'
+    return render_template(template_name,
+                           products=products,
+                           form=form,
+                           next_page=next_page,
+                           per_page=per_page,
+                           )
 
 
 @products_app.post('/', endpoint='create')
