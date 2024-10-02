@@ -2,7 +2,7 @@ from dataclasses import asdict
 from http import HTTPStatus
 from time import sleep
 
-from flask import (Blueprint, render_template, request, Response)
+from flask import (Blueprint, render_template, request, Response, redirect, url_for)
 from werkzeug.exceptions import HTTPException, NotFound
 
 from .crud import products_storage
@@ -66,4 +66,6 @@ def update_product(product_id: int):
 def delete_product(product_id: int):
     sleep(2)  # only for watching how animation works
     products_storage.delete(product_id)
-    return Response(status=HTTPStatus.NO_CONTENT)
+    if not request.args.get('redirect'):
+        return Response(status=HTTPStatus.NO_CONTENT)
+    return redirect(url_for('products_app.list'), HTTPStatus.SEE_OTHER)
