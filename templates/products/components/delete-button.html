@@ -4,6 +4,8 @@
         hx-target="closest .product_item"
         hx-swap="outerHTML swap:2s"
         hx-indicator="#product-{{ product.id }}"
+        hx-confirm="Are you sure to delete this product?"
+
 >
     <img
             src="{{ url_for('static', filename='img/trash-can-10417.svg') }}"

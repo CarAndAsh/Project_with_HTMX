@@ -66,5 +66,6 @@ URLs:
     - обработка ошибок (форма)
 
 Этап 11:
-- HTMX push URL
+- HTMX push URL - для истории браузера
 - 'hx-target="body"'
+- 'hx-confirm="<message>"'
