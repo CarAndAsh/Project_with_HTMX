@@ -1,0 +1,26 @@
+<ul id="products-list">
+    {% include 'products/components/only-items.html' %}
+    {% if prev_page %}
+        <button hx-push-url="true"
+                hx-get="{{ url_for('products_app.list',page=prev_page, per_page=per_page) }}"
+                hx-target="#products-list"
+                hx-swap="outerHTML"
+        >
+            &lt;&lt; Page {{ prev_page }}
+            {% include 'components/loading-animation.html' %}
+        </button>
+    {% endif %}
+
+    {{ page }}
+
+    {% if next_page %}
+        <button hx-push-url="true"
+                hx-get="{{ url_for('products_app.list',page=next_page, per_page=per_page) }}"
+                hx-target="#products-list"
+                hx-swap="outerHTML"
+        >
+        {% include 'components/loading-animation.html' %}
+            Page {{ next_page }} &gt;&gt;
+        </button>
+    {% endif %}
+</ul>

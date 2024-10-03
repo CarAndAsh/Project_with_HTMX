@@ -7,6 +7,7 @@ from werkzeug.exceptions import HTTPException, NotFound
 
 from .crud import products_storage
 from .forms import ProductForm
+from utils.helpers import is_background_request
 
 products_app = Blueprint('products_app', __name__)
 
@@ -20,20 +21,21 @@ def get_products_list():
     all_products = products_storage.get_list()
     page = request.args.get('page', PAGE_DEFAULT, type=int)
     per_page = request.args.get('per_page', PER_PAGE_DEFAULT, type=int)
-    print(page)
     to_idx = page * per_page
     from_idx = to_idx - per_page
     products = all_products[from_idx:to_idx]
     next_page = to_idx < len(all_products) and page + 1
-
+    prev_page = page > 1 and page - 1
     template_name = 'products/list.html'
-    if request.args.get('only_items'):
-        template_name = 'products/components/only-items-reveal.html'
+    if is_background_request() and request.headers.get('hx-target') == 'products-list':
+        template_name = 'products/components/items-list-single-page.html'
     return render_template(template_name,
                            products=products,
                            form=form,
+                           prev_page=prev_page,
                            next_page=next_page,
                            per_page=per_page,
+                           page=page
                            )
 
 
